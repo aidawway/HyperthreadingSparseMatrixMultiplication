@@ -1,0 +1,78 @@
+This is the code for David D'Atre's Final Project Submission
+for Computer Architecture
+
+__________________________________________________________
+Setup:
+
+First, run the following command to organize this code
+
+	./setup
+___________________________________________________________
+Validation:
+
+Code to validate the accuracy of the provided sparse matrix
+multiplication code can be found in the folder ./validation
+___________________________________________________________
+Raw Data:
+
+To create random sparseMatrices to test on you may wish to
+use the buildData script. The script buildData will create
+matrices for numTests tests in folders named after 
+testName. Each matrix will have matrixSize rows and 
+between matrixSize and 2 * matrixSize nonzero elements. The
+format expected by build data is given below.
+
+	./buildData testName matrixSize numTests
+
+buildData will also create two files: testName_input1.txt
+and testName_input2.txt that will be used to call 
+hyperthreadTest and/or singleThreadTest. 
+
+
+If you wish to create your own sparse matrices then follow
+the below format. 
+
+Note that all matrices must be square
+and that the data values must be doubles.
+
+	length, nnz
+	data1, data2, ...datannz,
+	c1, c2, ...cnnz,
+	r1, r2, ...rnnz, rf
+
+length is the length of the dense matrix
+nnz is the number of nonzero elements
+data1... are the list of data values separated by a comma
+c1... are the list of column indices separated by a comma
+r1... are the list of row indices separated by a comma
+
+Note: all matrices must be square
+Note: the data values must be doubles
+Note: it is assumed that SparseMatrix files end in .smx
+
+_________________________________________________________
+Running Tests:
+
+
+hyperthreadTest expects the following format
+
+	./hyperthreadTest input1 input2 matrixCount matrixSize output
+
+
+input1 is a list of .smx files that contain the left hand SparseMatrix 
+	operand data.
+
+input2 is a list of .smx files that contain the right hand SparseMatrix
+	operand data.
+
+matrixCount is the number of .smx files in input1 and input2
+
+matrixSize is the nummber of rows in the tested multiplications.
+	This value is purely cosmetic for output.
+
+output is the name of the file to write the timeTaken in seconds
+
+
+singleThreadTest expects the same arguments as hyperthreadTest.
+
+Note that singleThreadTest has a capital T in Thread.

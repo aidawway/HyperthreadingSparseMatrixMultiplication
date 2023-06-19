@@ -1,0 +1,21 @@
+This folder contains helper scripts and source files for various purposes
+
+Make all will make 3 executables: generateCSRMatrix, multiplyMatricesRunner, 
+and parseDenseMatrix.
+
+generateCSRMatrix(char* outputFile, int n, int nnz)
+	This process will generate a n by n sparse matrix in CSR format
+	with nnz nonzero elements and write it to the file indicated by
+	outputFile
+
+multiplyMatricesRunner(char* input1, char* input2, char* output)
+	This process will parse the SparseMatrices from the files
+	indicated by input1 and input2, multiply them together, 
+	and then write the product to the file indicated by output 
+	in CSR format.
+
+parseDenseMatrix(char* input)
+	This process will parse the SparseMatrix from the file 
+	indicated by input and print out the dense matrix 
+	representation.
+

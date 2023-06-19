@@ -1,0 +1,16 @@
+The validation suite validates the correctness of the SparseMatrix
+Multiplication by comparing the dense matrix representation of the 
+SparseMatrix product with the matlab product of the dense matrix
+representation of the operand matrices.
+
+Follow the instructions to build and run the validation suite.
+
+1. Run buildValidationTests. This will create several random
+	sparseMatrices, their product, and the dense matrix 
+	representations of them.
+
+2. Run runValidationTests. This will run the 
+	validateProductMatrix MatLab script
+	on all of the built data and print
+	the results
+	

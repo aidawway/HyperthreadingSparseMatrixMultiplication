@@ -1,0 +1,37 @@
+#!/bin/bash
+
+mkdir -p validation
+
+chmod +x runValidationTests
+chmod +x buildValidationTests
+mv runValidationTests ./validation/
+mv buildValidationTests ./validation/
+mv validateProductMatrix.m ./validation/
+mv README.validation ./validation/README
+
+mkdir -p utils
+mv matrixUtils.c ./utils/
+mv matrixUtils.h ./utils/
+mv TimeSpecUtils.c ./utils/
+mv TimeSpecUtils.h ./utils/
+mv multiplyMatrices.c ./utils/
+mv multiplyMatrices.h ./utils/
+mv generateCSRMatrix.c ./utils/
+mv generateCSRMatrix.h ./utils/
+mv ParseDenseMatrix.c ./utils/
+mv ParseDenseMatrix.h ./utils/
+mv multiplyMatricesRunner.c ./utils/
+mv Makefile.utils ./utils/Makefile
+chmod +x ./utils/Makefile
+mv README.utils ./utils/README
+
+chmod +x Makefile
+make all
+
+cd ./utils
+make all
+
+cd ..
+clear
+clear
+

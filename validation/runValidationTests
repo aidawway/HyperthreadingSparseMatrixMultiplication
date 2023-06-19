@@ -1,0 +1,28 @@
+#!/bin/bash
+
+matlatCommand=""
+declare -i n=1
+for size in "small" "medium" "large"
+do
+	n=$( expr "$n" '*' 10)
+	for testCount in {1..10}
+	do
+		path=${size}${testCount}
+		matlab -r "validateProductMatrix ${path}/m1.mx ${path}/m2.mx ${path}/output.mx ${path}/validation.txt; quit"
+	done
+done
+
+clear
+clear
+
+for size in "small" "medium" "large"
+do
+        n=$( expr "$n" '*' 10)
+        for testCount in {1..10}
+        do
+                path=${size}${testCount}
+                cat ${path}/validation.txt
+        done
+done
+
+echo done

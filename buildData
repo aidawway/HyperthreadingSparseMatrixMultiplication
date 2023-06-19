@@ -1,0 +1,23 @@
+#!/bin/bash
+
+name=$1
+n=$2
+numTests=$3
+
+for ((testCount=1; testCount<=$numTests; testCount++))
+do
+	path=${name}${testCount}
+	mkdir -p ./${path}
+	for matrixCount in 1 2
+	do
+		echo $n
+		nnz=$(expr "$RANDOM" '%' "$n" + "$n")
+		./utils/generateCSRMatrix ${path}/sm${matrixCount}.smx ${n} ${nnz}
+	done
+	
+	echo $path/sm1.smx >> ${name}_input1.txt
+	echo $path/sm1.smx >> ${name}_input2.txt
+		 
+done
+
+echo done

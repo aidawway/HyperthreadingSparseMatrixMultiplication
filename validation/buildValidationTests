@@ -1,0 +1,26 @@
+#!/bin/bash
+
+declare -i n=1
+for size in "small" "medium" "large"
+do
+	n=$( expr "$n" '*' 10)
+	#n=100
+
+	for testCount in {1..10}
+	do
+		path=${size}${testCount}
+		mkdir -p ./${path}
+		for matrixCount in 1 2
+		do
+			echo $n
+			nnz=$(expr "$RANDOM" '%' "$n" + "$n")
+			./../utils/generateCSRMatrix ${path}/sm${matrixCount}.smx $n $nnz
+			./../utils/parseDenseMatrix ${path}/sm${matrixCount}.smx > ${path}/m${matrixCount}.mx
+		done
+		./../utils/multiplyMatricesRunner ${path}/sm1.smx ${path}/sm2.smx ${path}/output.smx
+		./../utils/parseDenseMatrix ${path}/output.smx > ${path}/output.mx
+		 
+	done
+done
+
+echo done
